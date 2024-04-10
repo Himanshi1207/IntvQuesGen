@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "chrome",
+            "name": "http://\"mongodb+srv://preeti:xGn5iqtHfqEpEVm5@cluster0.zlljc.mongodb.net/UKG-Project\"",
+            "request": "launch",
+            "url": "http://\"mongodb+srv://preeti:xGn5iqtHfqEpEVm5@cluster0.zlljc.mongodb.net/UKG-Project\""
+        }
+    ]
+}
