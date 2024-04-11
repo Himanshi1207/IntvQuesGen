@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
+const {Schema} = mongoose;
 
-var questions = new mongoose.Schema({
+
+
+const questionSchema = new Schema({
   question: String,
   answer: String,
   experience: String,
@@ -8,4 +11,8 @@ var questions = new mongoose.Schema({
   subtopic: String
 });
 
-mongoose.model('questions', questions);
+
+//creating the model using questionSchema
+const Questions=mongoose.model('Questions',questionSchema);
+
+module.exports=Questions;
