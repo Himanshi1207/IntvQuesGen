@@ -1,12 +1,12 @@
 const express = require('express');
 const db = require('./db/db');
-const dotenv=require('dotenv');
 const bodyParser=require('body-parser');
+require('dotenv').config();
 const createQuestion=require('./routes/createQuestion');
+const registerUser=require('./routes/registerUser');
+const loginUser = require('./routes/loginUser');
 
-dotenv.config();
 const app = express();
-
 
 //connection to database
 db();
@@ -19,6 +19,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //api's 
 app.use(createQuestion);//api to create a new question
+app.use(registerUser);//api to register new users
+app.use(loginUser);//api to login existing users 
 
 
 app.get('/', (req, res) =>{

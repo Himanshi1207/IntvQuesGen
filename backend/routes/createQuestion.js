@@ -1,9 +1,12 @@
 const express = require('express');
 const Question=require('../models/questions');
+const requireAuth=require('../middleware/auth');
 const router=express.Router();
 
 
-router.post('/uploadquestion', async(req, res) => {
+//requireAuth middleware will make sure that only people with valid jwt token can upload question 
+
+router.post('/uploadquestion',requireAuth, async(req, res) => {
 
     console.log(req.body);
     const {question,answer,experience,level,subtopic}=req.body;
