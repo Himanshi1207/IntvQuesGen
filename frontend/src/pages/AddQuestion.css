@@ -1,0 +1,20 @@
+.h_cross{
+    position: relative;
+    top: -106px;
+    right: -182px;
+}
+.h_dropdown_topic{
+    color: var(--primary-dark);
+    font-size:17px;
+
+}
+.k-picker-solid {
+    margin-bottom: 20px !important;
+    background: none !important;
+    color: var(--primary-dark)!important;
+    border: 2px solid var(--primary-dark)!important;
+}
+.k-input-value-text {
+    color: var(--secondary-dark) !important;
+    font-size: 12px !important;
+}
