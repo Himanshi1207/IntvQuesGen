@@ -1,0 +1,185 @@
+body {
+    margin: 0px;
+    background-color: #164863;
+}
+
+.mainBody {
+    max-width: 1000px;
+    text-align: center;
+    margin: 0 auto;
+    background-image: linear-gradient(135deg, #EBF7FE, #d3e2eb);
+    border-radius: 50px;
+}
+
+.container {
+    display: flex; /* Use flexbox */
+}
+
+/* Define styles for the first column */
+.column1 {
+    flex: 60%; /* Take up 40% of the container width */
+    padding: 20px; /* Padding for the column */
+    text-align: left;
+}
+
+/* Define styles for the second column */
+.column2 {
+    flex: 40%; /* Take up 60% of the container width */
+    padding: 20px; /* Padding for the column */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    flex-direction: column; /* Align items vertically */
+}
+
+/* Define styles for the form */
+form {
+    /* Additional styles for the form */
+    max-width: 400px; /* Maximum width of the form */
+    padding: 20px; /* Padding for the form */
+    display: flex; /* Use flexbox for form elements */
+    flex-direction: column; /* Arrange form elements vertically */
+    border: 1px solid #ccc; /* Border for the form */
+    border-radius: 5px; /* Rounded corners for the form */
+}
+
+/* Define styles for form elements */
+input, textarea {
+    margin-bottom: 10px; /* Margin between form elements */
+    padding: 8px; /* Padding for form elements */
+    border: 1px solid #ccc; /* Border for form elements */
+    border-radius: 4px; /* Rounded corners for form elements */
+}
+
+/* Define styles for the submit button */
+input[type="submit"] {
+    background-color: #333; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* No border */
+    cursor: pointer; /* Cursor style */
+    padding: 10px; /* Padding for the button */
+    border-radius: 5px; /* Rounded corners for the button */
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+    .column2 {
+        justify-content: flex-start; /* Align form to the left */
+        padding-left: 20px; /* Add left padding */
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack columns vertically */
+    }
+    
+    .column1, .column2 {
+        padding: 40px;
+        flex: 100%; /* Take up full width */
+    }
+}
+
+
+header {
+    background-image:linear-gradient(145deg, #427D9D, #4E7F9A); /* Header background color */
+    padding: 10px; /* Padding for the header */
+    display: flex; /* Flex layout for positioning */
+    justify-content: space-between; /* Space between logo/title and login box */
+    align-items: center; /* Align items vertically */
+    border-radius: 10px 10px 0 0;
+}
+
+/* Styles for the logo container */
+.logo-container {
+    display: flex; /* Use flexbox for logo and title text */
+    align-items: center; /* Align items vertically */
+}
+
+/* Styles for the logo */
+.logo {
+    margin-right: 10px; /* Distance between logo and title text */
+    margin-left: 10px;
+}
+
+/* Styles for the title text */
+.titleText {
+    font-size: 1.5em; /* Adjust font size as needed */
+    font-weight: 0.9; /* Bold font */
+    margin-left: 20%;
+    font-family: "Itim", cursive;
+    color: white;
+}
+
+/* Define styles for the login box text */
+.login-text {
+    color: #fff; /* Text color */
+    font-weight: bold; /* Bold font */
+}
+
+.login-box {
+    border-radius: 10%;
+    padding: 10px;
+    background-color: #164863;
+    margin-right: 10px;
+    width: 60px;
+    text-align: center;
+}
+
+.mainTextIntv {
+    font-size: 2em;
+    width: 80%;
+}
+
+select {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #164863;
+    color: #164863;
+}
+
+.generateQuestionButton {
+    background-color: #DDF2FD;
+    text-decoration: double;
+    color: #164863;
+}
+
+.formBox {
+    background-color: #427D9D;
+}
+
+.blueBox {
+    margin-top: 30px;
+    height: 45px;
+    background-color: #427D9D;
+    border-radius: 10px 10px 0 0;
+    filter: brightness(1.5);
+    font-family:  monospace;
+
+}
+.blueText {
+    padding: 15px;
+    font-size: 1.2em;
+    color: white;
+    padding-left: 25px;
+}
+.queAnsBox {
+    margin-bottom: 10px;
+    font-family:  monospace;
+    text-align: left;
+}
+.questionBox {
+    padding: 30px;
+    background-color: white;
+}
+.questions {
+    padding: 10px;
+    background-color: white;
+}
+.answers {
+    padding: 10px;
+    background-color: #9BBEC8;
+    opacity: 0.7;
+    border-radius: 4px;
+}

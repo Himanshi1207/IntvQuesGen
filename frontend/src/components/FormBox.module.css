@@ -1,0 +1,18 @@
+select {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #164863;
+    color: #164863;
+}
+
+.generateQuestionButton {
+    background-color: #DDF2FD;
+    text-decoration: double;
+    color: #164863;
+}
+
+.formBox {
+    background-color: #427D9D;
+}
