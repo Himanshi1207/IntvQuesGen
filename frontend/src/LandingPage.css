@@ -1,29 +1,39 @@
-body {
-    margin: 0px;
-    background-color: #164863;
+Body {
+    margin: 0;
 }
 
-.mainBody {
+.s_bodyClass {
+    margin: 0px;
+    background-color: #164863;
+    /* filter: brightness(50%);  */
+    /* filter: contrast(80%); */
+    /* filter: saturate(200%);  */
+
+}
+
+.s_mainBody {
     max-width: 1000px;
     text-align: center;
     margin: 0 auto;
     background-image: linear-gradient(135deg, #EBF7FE, #d3e2eb);
     border-radius: 50px;
+    filter: brightness(110%);
+    filter: contrast(120%);
 }
 
-.container {
+.s_container {
     display: flex; /* Use flexbox */
 }
 
 /* Define styles for the first column */
-.column1 {
+.s_column1 {
     flex: 60%; /* Take up 40% of the container width */
     padding: 20px; /* Padding for the column */
     text-align: left;
 }
 
 /* Define styles for the second column */
-.column2 {
+.s_column2 {
     flex: 40%; /* Take up 60% of the container width */
     padding: 20px; /* Padding for the column */
     display: flex; /* Use flexbox for centering */
@@ -31,56 +41,8 @@ body {
     flex-direction: column; /* Align items vertically */
 }
 
-/* Define styles for the form */
-form {
-    /* Additional styles for the form */
-    max-width: 400px; /* Maximum width of the form */
-    padding: 20px; /* Padding for the form */
-    display: flex; /* Use flexbox for form elements */
-    flex-direction: column; /* Arrange form elements vertically */
-    border: 1px solid #ccc; /* Border for the form */
-    border-radius: 5px; /* Rounded corners for the form */
-}
-
-/* Define styles for form elements */
-input, textarea {
-    margin-bottom: 10px; /* Margin between form elements */
-    padding: 8px; /* Padding for form elements */
-    border: 1px solid #ccc; /* Border for form elements */
-    border-radius: 4px; /* Rounded corners for form elements */
-}
-
-/* Define styles for the submit button */
-input[type="submit"] {
-    background-color: #333; /* Button background color */
-    color: #fff; /* Button text color */
-    border: none; /* No border */
-    cursor: pointer; /* Cursor style */
-    padding: 10px; /* Padding for the button */
-    border-radius: 5px; /* Rounded corners for the button */
-}
-
-/* Media query for smaller screens */
-@media only screen and (max-width: 768px) {
-    .column2 {
-        justify-content: flex-start; /* Align form to the left */
-        padding-left: 20px; /* Add left padding */
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .container {
-        flex-direction: column; /* Stack columns vertically */
-    }
-    
-    .column1, .column2 {
-        padding: 40px;
-        flex: 100%; /* Take up full width */
-    }
-}
-
-
-header {
+/* Header style*/
+.s_header {
     background-image:linear-gradient(145deg, #427D9D, #4E7F9A); /* Header background color */
     padding: 10px; /* Padding for the header */
     display: flex; /* Flex layout for positioning */
@@ -90,19 +52,19 @@ header {
 }
 
 /* Styles for the logo container */
-.logo-container {
+.s_logo-container {
     display: flex; /* Use flexbox for logo and title text */
     align-items: center; /* Align items vertically */
 }
 
 /* Styles for the logo */
-.logo {
+.s_logo {
     margin-right: 10px; /* Distance between logo and title text */
     margin-left: 10px;
 }
 
 /* Styles for the title text */
-.titleText {
+.s_titleText {
     font-size: 1.5em; /* Adjust font size as needed */
     font-weight: 0.9; /* Bold font */
     margin-left: 20%;
@@ -111,12 +73,12 @@ header {
 }
 
 /* Define styles for the login box text */
-.login-text {
+.s_login-text {
     color: #fff; /* Text color */
     font-weight: bold; /* Bold font */
 }
 
-.login-box {
+.s_login-box {
     border-radius: 10%;
     padding: 10px;
     background-color: #164863;
@@ -125,12 +87,25 @@ header {
     text-align: center;
 }
 
-.mainTextIntv {
+/* INTRO SECTION */
+.s_mainTextIntv {
     font-size: 2em;
     width: 80%;
 }
 
-select {
+/* FORM SECTION */
+.s_formBox {
+    /* Additional styles for the form */
+    max-width: 400px; /* Maximum width of the form */
+    padding: 20px; /* Padding for the form */
+    display: flex; /* Use flexbox for form elements */
+    flex-direction: column; /* Arrange form elements vertically */
+    border: 1px solid #ccc; /* Border for the form */
+    border-radius: 5px; /* Rounded corners for the form */
+    background-color: #427D9D;
+}
+
+.s_selectSection {
     padding: 10px;
     margin-top: 5px;
     border-radius: 5px;
@@ -139,17 +114,51 @@ select {
     color: #164863;
 }
 
-.generateQuestionButton {
+/* Define styles for form elements */
+.s_generateQuestionButton {
+    margin-bottom: 10px; /* Margin between form elements */
+    padding: 8px; /* Padding for form elements */
+    border: 1px solid #ccc; /* Border for form elements */
+    border-radius: 4px; /* Rounded corners for form elements */
+}
+
+/* Define styles for the submit button */
+.s_generateQuestionButton{
+    background-color: #333; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* No border */
+    cursor: pointer; /* Cursor style */
+    padding: 10px; /* Padding for the button */
+    border-radius: 5px; /* Rounded corners for the button */
+}
+
+.s_generateQuestionButton {
     background-color: #DDF2FD;
     text-decoration: double;
     color: #164863;
 }
 
-.formBox {
-    background-color: #427D9D;
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+    .s_column2 {
+        justify-content: flex-start; /* Align form to the left */
+        padding-left: 20px; /* Add left padding */
+    }
 }
 
-.blueBox {
+@media only screen and (max-width: 768px) {
+    .s_container {
+        flex-direction: column; /* Stack columns vertically */
+    }
+    
+    .s_column1, .s_column2 {
+        padding: 40px;
+        flex: 100%; /* Take up full width */
+    }
+}
+
+
+.s_blueBox {
     margin-top: 30px;
     height: 45px;
     background-color: #427D9D;
@@ -158,26 +167,26 @@ select {
     font-family:  monospace;
 
 }
-.blueText {
+.s_blueText {
     padding: 15px;
     font-size: 1.2em;
     color: white;
     padding-left: 25px;
 }
-.queAnsBox {
+.s_queAnsBox {
     margin-bottom: 10px;
     font-family:  monospace;
     text-align: left;
 }
-.questionBox {
+.s_questionBox {
     padding: 30px;
     background-color: white;
 }
-.questions {
+.s_questions {
     padding: 10px;
     background-color: white;
 }
-.answers {
+.s_answers {
     padding: 10px;
     background-color: #9BBEC8;
     opacity: 0.7;

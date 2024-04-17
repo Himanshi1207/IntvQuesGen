@@ -1,5 +1,6 @@
 // LandingPage.js
 import React from 'react';
+import { useState } from 'react';
 import Header from './components/Header';
 import FormBox from './components/FormBox';
 import Intro from './components/Intro';
@@ -15,20 +16,23 @@ function LandingPage() {
         href="https://fonts.googleapis.com/css2?family=Itim&display=swap"
         rel="stylesheet"
       />
-      <div className="mainBody">
-        <Header />
-        <div className="container">
-          {/* First column with text */}
-          <div className="column1">
-            <Intro />
+
+      <div className='s_bodyClass'>
+        <div className="s_mainBody">
+          <Header />
+          <div className="s_container">
+            {/* First column with text */}
+            <div className="s_column1">
+              <Intro />
+            </div>
+            {/* Second column with form */}
+            <div className="s_column2">
+              <FormBox />
+            </div>
           </div>
-          {/* Second column with form */}
-          <div className="column2">
-            <FormBox />
+          <div>
+            <GeneratedQABox />
           </div>
-        </div>
-        <div>
-          <GeneratedQABox />
         </div>
       </div>
     </>

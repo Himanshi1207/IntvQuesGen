@@ -5,9 +5,9 @@ import './FormBox.module.css'; // Import CSS module
 function FormBox() {
   return (
     <>
-        <form className="formBox">
+        <form className="s_formBox">
         <h2>Post your request</h2>
-        <select id="Topics" name="Topics">
+        <select className='s_selectSection' id="Topics" name="Topics">
             <option value="" disabled="" selected="">
             Topic
             </option>
@@ -19,7 +19,7 @@ function FormBox() {
             </option>
             <option value="WebDevelopment">Web Development</option>
         </select>
-        <select id="LevelOfQues" name="LevelOfQues">
+        <select className='s_selectSection' id="LevelOfQues" name="LevelOfQues">
             <option value="" disabled="" selected="">
             Level of Questions
             </option>
@@ -27,7 +27,7 @@ function FormBox() {
             <option value="2to5">2 - 5 year</option>
             <option value="above5">5+ year</option>
         </select>
-        <select id="LevelOfExperience" name="LevelOfExperience">
+        <select className='s_selectSection' id="LevelOfExperience" name="LevelOfExperience">
             <option value="" disabled="" selected="">
             Level of Experience
             </option>
@@ -35,7 +35,7 @@ function FormBox() {
             <option value="Intermediate">Intermediate</option>
             <option value="Senior">Senior</option>
         </select>
-        <select id="NumberOfQuestions" name="NumberOfQuestions">
+        <select className='s_selectSection' id="NumberOfQuestions" name="NumberOfQuestions">
             <option value="" disabled="" selected="">
             Number of Questions
             </option>
@@ -53,7 +53,7 @@ function FormBox() {
         <br />
         <br />
         <input
-            className="generateQuestionButton"
+            className="s_generateQuestionButton"
             type="submit"
             defaultValue="Generate Questions"
         />

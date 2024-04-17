@@ -6,7 +6,7 @@ function Intro() {
   return (
     <>
         <p>Welcome to </p>
-        <p className="mainTextIntv">Interview Question Generator</p>
+        <p className="s_mainTextIntv">Interview Question Generator</p>
         <p>
           With our intuitive interface, you can effortlessly customize question
           sets based on your preferred topics, desired difficulty levels, and
