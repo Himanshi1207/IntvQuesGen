@@ -1,0 +1,10 @@
+.s_mainTextIntv {
+    font-size: 2em;
+    width: 80%;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    color: #164863;
+    border-bottom: 5px solid #427D9D;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}

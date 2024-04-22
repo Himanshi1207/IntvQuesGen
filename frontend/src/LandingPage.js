@@ -16,6 +16,7 @@ function LandingPage() {
         href="https://fonts.googleapis.com/css2?family=Itim&display=swap"
         rel="stylesheet"
       />
+      <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' />
 
       <div className='s_bodyClass'>
         <div className="s_mainBody">

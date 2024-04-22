@@ -4,82 +4,76 @@ Body {
 
 .s_bodyClass {
     margin: 0px;
-    background-color: #164863;
-    /* filter: brightness(50%);  */
-    /* filter: contrast(80%); */
-    /* filter: saturate(200%);  */
-
+    height: 100%;
 }
 
 .s_mainBody {
-    max-width: 1000px;
     text-align: center;
     margin: 0 auto;
     background-image: linear-gradient(135deg, #EBF7FE, #d3e2eb);
-    border-radius: 50px;
-    filter: brightness(110%);
-    filter: contrast(120%);
 }
 
 .s_container {
-    display: flex; /* Use flexbox */
+    display: flex; 
+    padding-left: 12%;
+    padding-right: 12%;
 }
 
 /* Define styles for the first column */
 .s_column1 {
-    flex: 60%; /* Take up 40% of the container width */
-    padding: 20px; /* Padding for the column */
+    flex: 60%;
+    padding: 20px; 
     text-align: left;
 }
 
 /* Define styles for the second column */
 .s_column2 {
-    flex: 40%; /* Take up 60% of the container width */
-    padding: 20px; /* Padding for the column */
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    flex-direction: column; /* Align items vertically */
+    flex: 40%;
+    padding: 20px; 
+    display: flex; 
+    justify-content: center; 
+    flex-direction: column; 
 }
 
 /* Header style*/
 .s_header {
-    background-image:linear-gradient(145deg, #427D9D, #4E7F9A); /* Header background color */
-    padding: 10px; /* Padding for the header */
-    display: flex; /* Flex layout for positioning */
-    justify-content: space-between; /* Space between logo/title and login box */
-    align-items: center; /* Align items vertically */
-    border-radius: 10px 10px 0 0;
+    background-image:linear-gradient(145deg, #427D9D, #4E7F9A); 
+    padding: 1%;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
 }
 
 /* Styles for the logo container */
 .s_logo-container {
-    display: flex; /* Use flexbox for logo and title text */
-    align-items: center; /* Align items vertically */
+    display: flex; 
+    align-items: center; 
 }
 
 /* Styles for the logo */
 .s_logo {
-    margin-right: 10px; /* Distance between logo and title text */
+    margin-right: 10px; 
     margin-left: 10px;
 }
 
 /* Styles for the title text */
 .s_titleText {
-    font-size: 1.5em; /* Adjust font size as needed */
-    font-weight: 0.9; /* Bold font */
+    font-size: 1.5em; 
+    font-weight: 0.9; 
     margin-left: 20%;
     font-family: "Itim", cursive;
-    color: white;
+    color: #ECF4D6;
 }
 
 /* Define styles for the login box text */
 .s_login-text {
-    color: #fff; /* Text color */
-    font-weight: bold; /* Bold font */
+    color: #fff; 
+    font-weight: bold; 
+    font-family: Consolas,Menlo,"courier new",monospace;
 }
 
 .s_login-box {
-    border-radius: 10%;
+    border-radius: 5px;
     padding: 10px;
     background-color: #164863;
     margin-right: 10px;
@@ -91,17 +85,36 @@ Body {
 .s_mainTextIntv {
     font-size: 2em;
     width: 80%;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    color: #164863;
+    border-bottom: 5px solid #427D9D;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.s_welcomePara {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    font-size: large;
+    font-weight: 600;
+}
+
+.s_introPara {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    letter-spacing: 1px;
 }
 
 /* FORM SECTION */
 .s_formBox {
-    /* Additional styles for the form */
-    max-width: 400px; /* Maximum width of the form */
-    padding: 20px; /* Padding for the form */
-    display: flex; /* Use flexbox for form elements */
-    flex-direction: column; /* Arrange form elements vertically */
-    border: 1px solid #ccc; /* Border for the form */
-    border-radius: 5px; /* Rounded corners for the form */
+    max-width: 400px; 
+    padding: 20px;
+    display: flex; 
+    flex-direction: column; 
+    border: 1px solid #ccc;
+    border-radius: 5px; 
     background-color: #427D9D;
 }
 
@@ -114,22 +127,26 @@ Body {
     color: #164863;
 }
 
-/* Define styles for form elements */
-.s_generateQuestionButton {
-    margin-bottom: 10px; /* Margin between form elements */
-    padding: 8px; /* Padding for form elements */
-    border: 1px solid #ccc; /* Border for form elements */
-    border-radius: 4px; /* Rounded corners for form elements */
+/*Question Answer Box*/
+.s_qaBox {
+    padding-left: 12%;
+    padding-right: 12%;
 }
 
-/* Define styles for the submit button */
+.s_generateQuestionButton {
+    margin-bottom: 10px; 
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+}
+
 .s_generateQuestionButton{
-    background-color: #333; /* Button background color */
-    color: #fff; /* Button text color */
-    border: none; /* No border */
-    cursor: pointer; /* Cursor style */
-    padding: 10px; /* Padding for the button */
-    border-radius: 5px; /* Rounded corners for the button */
+    background-color: #333; 
+    color: #fff; 
+    border: none; 
+    cursor: pointer;
+    padding: 10px; 
+    border-radius: 5px; 
 }
 
 .s_generateQuestionButton {
@@ -141,19 +158,19 @@ Body {
 /* Media query for smaller screens */
 @media only screen and (max-width: 768px) {
     .s_column2 {
-        justify-content: flex-start; /* Align form to the left */
-        padding-left: 20px; /* Add left padding */
+        justify-content: flex-start; 
+        padding-left: 20px; 
     }
 }
 
 @media only screen and (max-width: 768px) {
     .s_container {
-        flex-direction: column; /* Stack columns vertically */
+        flex-direction: column; 
     }
     
     .s_column1, .s_column2 {
         padding: 40px;
-        flex: 100%; /* Take up full width */
+        flex: 100%; 
     }
 }
 
