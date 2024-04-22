@@ -3,7 +3,7 @@ const {Schema} = mongoose;
 
 
 
-const questionSchema = new Schema({
+const questionschema = new Schema({
   question: String,
   answer: String,
   experience: String,
@@ -13,6 +13,6 @@ const questionSchema = new Schema({
 
 
 //creating the model using questionSchema
-const Questions=mongoose.model('Questions',questionSchema);
+const Questions=mongoose.model("Questions",questionschema);
 
 module.exports=Questions;
