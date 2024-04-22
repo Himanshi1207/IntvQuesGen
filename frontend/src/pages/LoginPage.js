@@ -1,58 +1,150 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
 import { RiCloseLine } from "react-icons/ri";
+import { Button, useToast } from "@chakra-ui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-const LoginPage = ({setIsOpen}) => {
-  const [password, setPassword] = useState('');
+const LoginPage = ({ setIsOpen }) => {
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+    }
+  }, []);
+  const [email, setEmail] = useState();
+  const [loading, setLoading] = useState(false);
+  const [password, setPassword] = useState();
+  const toast = useToast();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-
+  const [user, setUser] = useState();
+  const navigateSignup = () => {
+    navigate("/signup");
+  };
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  const submitHandler = async () => {
+    setLoading(true);
+    if (!email || !password) {
+      console.log("email or password missing");
+      toast({
+        title: "Please fill all the fields.",
+        description: "We've created your account for you.",
+        status: "warning",
+        duration: 9000,
+        isClosable: true,
+        position: "bottom",
+      });
+      // toast({
+      //   title: "Please fill all the fields",
+      //   status: "warning",
+      //   duration: 5000,
+      //   isClosable: true,
+      //   position: "bottom",
+      // });
+      setLoading(false);
+      return;
+    }
+
+    try {
+      console.log("trying");
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+      const { data } = await axios.post("/login", { email, password }, config);
+      toast({
+        title: "Login Successful",
+        status: "success",
+        duration: 50000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setUser(data);
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      localStorage.setItem("isLoggedIn", true);
+      setLoading(false);
+      navigate("/");
+      console.log(data);
+    } catch (error) {
+      toast({
+        title: "Error Occured!",
+        description: error.response.data.message,
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+    }
+  };
   return (
-    <div className="h_outer_div">
-      <div className="h_container">
-        <div className="h_topic">Login</div>
-        <button className="h_cross" onClick={() => setIsOpen(false)}>
-          <RiCloseLine style={{ marginBottom: "-3px" }} />
-        </button>
-        <form>
-          <label className="h_label">Email:</label>
-          <br />
-          <input
-            className="h_input"
-            placeholder="abc@gmail.com"
-            type="email"
-            name="email"
-          />
-          <br />
-          <label className="h_label">Password</label>
-          <br />
-          <div className="h_password h_input">
-            <input
-              className="h_input_password"
-              type={showPassword ? "text" : "password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-            />
-            <FontAwesomeIcon
-              className="h_icon"
-              icon={showPassword ? faEyeSlash : faEye}
-              onClick={togglePasswordVisibility}
-            />
+    <div className="h_darkBG">
+      <div className="h_centered">
+        <div className="h_outer_div">
+          <div className="h_container">
+            <div className="h_topic">Login</div>
+            <button className="h_cross" onClick={() => setIsOpen(false)}>
+              <RiCloseLine style={{ marginBottom: "-3px" }} />
+            </button>
+            <form>
+              <label className="h_label">Email:</label>
+              <br />
+              <input
+                className="h_input"
+                placeholder="abc@gmail.com"
+                value={email}
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <br />
+              <label className="h_label" value={password}>
+                Password
+              </label>
+              <br />
+              <div className="h_password h_input">
+                <input
+                  className="h_input_password"
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
+                />
+                <FontAwesomeIcon
+                  className="h_icon"
+                  icon={showPassword ? faEyeSlash : faEye}
+                  onClick={togglePasswordVisibility}
+                />
+              </div>
+              <div className="h_forgotpass">Forgot Password?</div>
+              <br />
+              <div className="h_button_div">
+                <Button
+                  className="h_button"
+                  type="submit"
+                  value="Login"
+                  onClick={submitHandler}
+                  isLoading={loading}
+                >
+                  Login
+                </Button>
+              </div>
+              <div className="h_signup">
+                Don't have an account?{" "}
+                <span className="h_signup_link" onClick={navigateSignup}>
+                  SignUp
+                </span>
+              </div>
+            </form>
           </div>
-          <div className="h_forgotpass">Forgot Password?</div>
-          <br />
-          <div className="h_button_div">
-            <input className="h_button" type="submit" value="Login" />
-          </div>
-          <div className="h_signup">
-            Don't have an account? <span className="h_signup_link">SignUp</span>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   );
