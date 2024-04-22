@@ -23,7 +23,7 @@ const SelfWritingText = () => {
     return () => clearTimeout(typeWriter);
   }, []); // Only run this effect once on component mount
 
-  return <p className="s_mainTextIntv">{text}</p>  ;
+  return <span className="s_mainTextIntv">{text}</span>  ;
 };
 
 export default SelfWritingText;
