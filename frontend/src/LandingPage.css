@@ -1,0 +1,216 @@
+.s_bodyClass {
+    margin: 0px;
+    height: 100%;
+}
+
+.s_mainBody {
+    text-align: center;
+    margin: 0 auto;
+    background-image: linear-gradient(135deg, #EBF7FE, #d3e2eb);
+}
+
+.s_container {
+    display: flex; 
+    padding-left: 12%;
+    padding-right: 12%;
+}
+
+/* Define styles for the first column */
+.s_column1 {
+    flex: 60%;
+    padding: 20px; 
+    text-align: left;
+}
+
+/* Define styles for the second column */
+.s_column2 {
+    flex: 40%;
+    padding: 20px; 
+    display: flex; 
+    justify-content: center; 
+    flex-direction: column; 
+}
+
+/* Header style*/
+.s_header {
+    background-image:linear-gradient(145deg, #427D9D, #4E7F9A); 
+    padding: 1%;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+/* Styles for the logo container */
+.s_logo-container {
+    display: flex; 
+    align-items: center; 
+}
+
+/* Styles for the logo */
+.s_logo {
+    margin-right: 10px; 
+    margin-left: 10px;
+}
+
+/* Styles for the title text */
+.s_titleText {
+    font-size: 1.5em; 
+    font-weight: 0.9; 
+    margin-left: 20%;
+    font-family: "Itim", cursive;
+    color: #ECF4D6;
+}
+
+/* Define styles for the login box text */
+.s_login-text {
+    color: #fff; 
+    font-weight: bold; 
+    font-family: Consolas,Menlo,"courier new",monospace;
+}
+
+.s_login-box {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #164863;
+    margin-right: 10px;
+    width: 60px;
+    text-align: center;
+}
+
+/* INTRO SECTION */
+.s_mainTextIntv {
+    display: inline;
+    font-size: 2em;
+    width: 80%;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    color: #164863;
+    border-bottom: 5px solid #427D9D;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
+
+.s_borderBottom {
+    margin-top: 18px;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+}
+
+.s_welcomePara {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    font-size: large;
+    font-weight: 600;
+}
+
+.s_introPara {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
+
+/* FORM SECTION */
+.s_formBox {
+    max-width: 400px; 
+    padding: 20px;
+    display: flex; 
+    flex-direction: column; 
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    background-color: #427D9D;
+}
+
+.s_selectSection {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid #164863;
+    color: #164863;
+}
+
+/*Question Answer Box*/
+.s_qaBox {
+    padding-left: 12%;
+    padding-right: 12%;
+}
+
+.s_generateQuestionButton {
+    margin-bottom: 10px; 
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+}
+
+.s_generateQuestionButton{
+    background-color: #333; 
+    color: #fff; 
+    border: none; 
+    cursor: pointer;
+    padding: 10px; 
+    border-radius: 5px; 
+}
+
+.s_generateQuestionButton {
+    background-color: #DDF2FD;
+    text-decoration: double;
+    color: #164863;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+    .s_column2 {
+        justify-content: flex-start; 
+        padding-left: 20px; 
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .s_container {
+        flex-direction: column; 
+    }
+    
+    .s_column1, .s_column2 {
+        padding: 40px;
+        flex: 100%; 
+    }
+}
+
+
+.s_blueBox {
+    margin-top: 30px;
+    height: 45px;
+    background-color: #427D9D;
+    border-radius: 10px 10px 0 0;
+    filter: brightness(1.5);
+    font-family:  monospace;
+
+}
+.s_blueText {
+    padding: 15px;
+    font-size: 1.2em;
+    color: white;
+    padding-left: 25px;
+}
+.s_queAnsBox {
+    margin-bottom: 10px;
+    font-family:  monospace;
+    text-align: left;
+}
+.s_questionBox {
+    padding: 30px;
+    background-color: white;
+}
+.s_questions {
+    padding: 10px;
+    background-color: white;
+}
+.s_answers {
+    padding: 10px;
+    background-color: #9BBEC8;
+    opacity: 0.7;
+    border-radius: 4px;
+}
