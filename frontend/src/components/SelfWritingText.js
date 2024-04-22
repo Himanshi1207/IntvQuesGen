@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import './SelfWritingText.module.css';
+import React, { useState, useEffect } from 'react';
 
 const SelfWritingText = () => {
   const [text, setText] = useState('');
   const textContent = "Interview Question Generator";
+  let timeoutId; // Store timeout ID
 
   useEffect(() => {
     let i = 0;
@@ -13,16 +13,17 @@ const SelfWritingText = () => {
       if (i < textContent.length) {
         setText(prevText => prevText + textContent.charAt(i));
         i++;
-        setTimeout(typeWriter, speed);
+        timeoutId = setTimeout(typeWriter, speed); // Store timeout ID
       }
     };
 
     typeWriter();
 
-    return () => clearTimeout(typeWriter);
+    // Clear timeout when component unmounts
+    return () => clearTimeout(timeoutId);
   }, []);
 
-  return <p className="s_mainTextIntv">{textContent}</p>  ;
+  return <p className="s_mainTextIntv">{text}</p>;
 };
 
 export default SelfWritingText;
