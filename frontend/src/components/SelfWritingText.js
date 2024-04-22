@@ -19,11 +19,10 @@ const SelfWritingText = () => {
 
     typeWriter();
 
-    // Clean-up function to clear the timeout
     return () => clearTimeout(typeWriter);
-  }, []); // Only run this effect once on component mount
+  }, []);
 
-  return <span className="s_mainTextIntv">{text}</span>  ;
+  return <p className="s_mainTextIntv">{textContent}</p>  ;
 };
 
 export default SelfWritingText;

@@ -9,7 +9,9 @@ function Intro() {
   return (
     <>
         <p className='s_welcomePara'>Welcome to </p>
-        <SelfWritingText />
+        <div className='s_borderBottom'>
+          <SelfWritingText />
+        </div>
         <p className='s_introPara'>
         Introducing our Interview Question Generator – the ultimate tool for interviewers looking to streamline the hiring process with precision and ease!
 
