@@ -5,6 +5,7 @@ require('dotenv').config();
 const createQuestion=require('./routes/createQuestion');
 const registerUser=require('./routes/registerUser');
 const loginUser = require('./routes/loginUser');
+const findQuestion = require('./routes/findQuestion');
 
 const app = express();
 
@@ -21,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(createQuestion);//api to create a new question
 app.use(registerUser);//api to register new users
 app.use(loginUser);//api to login existing users 
-
+app.use(findQuestion); //api to find questions
 
 app.get('/', (req, res) =>{
     res.send('This is test api!!');
