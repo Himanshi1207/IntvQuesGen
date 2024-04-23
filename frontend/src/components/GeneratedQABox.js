@@ -1,6 +1,6 @@
 // QueAnsBox.js
 import React from 'react';
-import './GeneratedQABox.module.css'; // Import CSS module
+import './GeneratedQABox.module.css'; 
 import QueAnsBox from './QueAnsBox';
 
 function GeneratedQABox() {
