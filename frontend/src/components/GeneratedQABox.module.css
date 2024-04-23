@@ -1,0 +1,19 @@
+.blueBox {
+    margin-top: 30px;
+    height: 45px;
+    background-color: #427D9D;
+    border-radius: 10px 10px 0 0;
+    filter: brightness(1.5);
+    font-family:  monospace;
+
+}
+.blueText {
+    padding: 15px;
+    font-size: 1.2em;
+    color: white;
+    padding-left: 25px;
+}
+.questionBox {
+    padding: 30px;
+    background-color: white;
+}

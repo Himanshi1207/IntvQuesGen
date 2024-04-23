@@ -86,9 +86,9 @@ const SignupPage = ({ setIsOpen }) => {
         <div className="h_outer_div">
           <div className="h_container">
             <div className="h_topic">Register</div>
-            <button className="h_cross" onClick={() => setIsOpen(false)}>
+            {/* <button className="h_cross" onClick={() => setIsOpen(false)}>
               <RiCloseLine style={{ marginBottom: "-3px" }} />
-            </button>
+            </button> */}
             <form>
               <label className="h_label">Name:</label>
               <br />

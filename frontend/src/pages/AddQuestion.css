@@ -18,3 +18,11 @@
     color: var(--secondary-dark) !important;
     font-size: 12px !important;
 }
+.h_textinput{
+    border: 2px solid var(--primary-dark);
+    border-radius: 5px;
+    resize: none;
+    font-family: "Aleo", sans-serif;
+    color: var(--secondary-dark);
+    outline: none;
+}

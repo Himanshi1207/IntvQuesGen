@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
 import { RiCloseLine } from "react-icons/ri";
-import { Button, useToast } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -19,7 +19,6 @@ const LoginPage = ({ setIsOpen }) => {
   const [email, setEmail] = useState();
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState();
-  const toast = useToast();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [user, setUser] = useState();
@@ -33,21 +32,6 @@ const LoginPage = ({ setIsOpen }) => {
     setLoading(true);
     if (!email || !password) {
       console.log("email or password missing");
-      toast({
-        title: "Please fill all the fields.",
-        description: "We've created your account for you.",
-        status: "warning",
-        duration: 9000,
-        isClosable: true,
-        position: "bottom",
-      });
-      // toast({
-      //   title: "Please fill all the fields",
-      //   status: "warning",
-      //   duration: 5000,
-      //   isClosable: true,
-      //   position: "bottom",
-      // });
       setLoading(false);
       return;
     }
@@ -60,13 +44,6 @@ const LoginPage = ({ setIsOpen }) => {
         },
       };
       const { data } = await axios.post("/login", { email, password }, config);
-      toast({
-        title: "Login Successful",
-        status: "success",
-        duration: 50000,
-        isClosable: true,
-        position: "bottom",
-      });
       setUser(data);
       localStorage.setItem("userInfo", JSON.stringify(data));
       localStorage.setItem("isLoggedIn", true);
@@ -74,14 +51,7 @@ const LoginPage = ({ setIsOpen }) => {
       navigate("/");
       console.log(data);
     } catch (error) {
-      toast({
-        title: "Error Occured!",
-        description: error.response.data.message,
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
+      
       setLoading(false);
     }
   };
@@ -91,9 +61,9 @@ const LoginPage = ({ setIsOpen }) => {
         <div className="h_outer_div">
           <div className="h_container">
             <div className="h_topic">Login</div>
-            <button className="h_cross" onClick={() => setIsOpen(false)}>
-              <RiCloseLine style={{ marginBottom: "-3px" }} />
-            </button>
+            {/* <button className="h_cross" onClick={() => setIsOpen(false)}> */}
+              {/* <RiCloseLine style={{ marginBottom: "-3px" }} /> */}
+            {/* </button> */}
             <form>
               <label className="h_label">Email:</label>
               <br />
