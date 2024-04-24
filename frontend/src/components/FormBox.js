@@ -1,6 +1,8 @@
 import React, { useMemo, useState } from "react";
 import { RiCloseLine } from "react-icons/ri";
 import { DropDownList } from "@progress/kendo-react-dropdowns";
+import axios from "axios";
+
 const FormBox = ({ setIsOpen }) => {
     const [selectedValues, setSelectedValues] = useState({
         topics: "",
@@ -23,9 +25,31 @@ const FormBox = ({ setIsOpen }) => {
         }));
       };
     
-      const handleSubmit = (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("Form data:", selectedValues);
+
+        for(let key in selectedValues) {
+          if(!selectedValues[key]) {
+            console.log(key, "is not selected");
+            return;
+          }
+        }
+
+        try {
+          console.log("trying");
+          const config = {
+            headers: {
+              "Content-type": "application/json",
+            },
+          };
+
+          const { data } = await axios.post("/findQuestion", selectedValues, config);
+          
+          console.log(data);
+        } catch (error) {
+          
+        }
       };
 
 

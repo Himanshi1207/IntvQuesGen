@@ -221,6 +221,8 @@
     margin-bottom: 10px;
     font-family: monospace;
     text-align: left;
+    line-height: 1.5;
+    letter-spacing: normal;
 }
 
 .s_questionBox {
