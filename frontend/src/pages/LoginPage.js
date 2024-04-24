@@ -28,7 +28,8 @@ const LoginPage = ({ setIsOpen }) => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  const submitHandler = async () => {
+  const submitHandler = async (e) => {
+     e.preventDefault();
     setLoading(true);
     if (!email || !password) {
       console.log("email or password missing");

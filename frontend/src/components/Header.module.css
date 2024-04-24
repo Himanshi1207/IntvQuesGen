@@ -38,7 +38,7 @@
 .login-box {
     border-radius: 10%;
     padding: 10px;
-    background-color: #164863;
+    background-color: var(--secondary-dark);
     margin-right: 10px;
     width: 60px;
     text-align: center;

@@ -1,11 +1,14 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { RiCloseLine } from "react-icons/ri";
 import { DropDownList } from "@progress/kendo-react-dropdowns";
 import "./AddQuestion.css";
-import { TextArea } from "@progress/kendo-react-inputs";
+// import { TextArea } from "@progress/kendo-react-inputs";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const AddQuestion = ({ setIsOpen }) => {
+import { useEffect } from "react";
+const AddQuestion = () => {
+  const userLogged = JSON.parse(localStorage.getItem("isLoggedIn"));
+
   const topics = [
     "Core Java",
     "OOPS",
@@ -16,38 +19,65 @@ const AddQuestion = ({ setIsOpen }) => {
   const lvlOfExp = ["0 YOE", "1-2 YOE", "3-4 YOE", "5+ YOE"];
   const lvlOfQues = ["Beginner", "Medium", "Hard"];
 
-  const [topic, setTopic] = useState("");
+  const [subtopic, setSubtopic] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const [lvl, setLvl] = useState("");
-  const [exp, setExp] = useState("");
-  const [ques, setQues] = useState("");
-  const [ans, setAns] = useState("");
+  const [level, setLevel] = useState("");
+  const [experience, setExperience] = useState("");
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
   const [user, setUser] = useState();
+  const [token, setToken] = useState("");
 
-  const submitHandler = async () => {
+  // useEffect(() => {
+  //   // Retrieve token from localStorage
+  //   const storedToken = localStorage.getItem("userInfo");
+  //   if (storedToken) {
+  //   }
+  // }, [subtopic]);
+
+
+  useEffect(() => {
+    // Retrieve userinfo object from localStorage
+    const userinfoString = localStorage.getItem("userInfo");
+    if (userinfoString) {
+      const userinfo = JSON.parse(userinfoString);
+      // Extract token from userinfo
+      const storedToken = userinfo.token;
+      if (storedToken) {
+      console.log("token");
+      setToken(storedToken);
+      console.log(token);
+      }
+    }
+  }, [subtopic]);
+
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
     setLoading(true);
-    if (!topic || !lvl || !exp || !ques || !ans) {
-      console.log("Please fill all the fields");
+    if (!subtopic || !level || !question || !answer || !experience) {
+      console.log("Please fill topic");
       setLoading(false);
       return;
     }
-
     try {
       console.log("trying");
+      console.log(level, question, answer, experience, subtopic);
       const config = {
         headers: {
-          "Content-type": "application/json",
+          // "Content-type": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
       };
       const { data } = await axios.post(
         "/uploadquestion",
-        { ques, ans, exp, lvl, topic },
+        { question, answer, experience, level, subtopic },
         config
       );
       setUser(data);
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      localStorage.setItem("isLoggedIn", true);
+      // localStorage.setItem("userInfo", JSON.stringify(data));
+      // localStorage.setItem("isLoggedIn", true);
       setLoading(false);
       navigate("/");
       console.log(data);
@@ -61,45 +91,46 @@ const AddQuestion = ({ setIsOpen }) => {
         <div className="h_outer_div">
           <div className="h_container">
             <div className="h_topic">Add Question</div>
-            <button className="h_cross" onClick={() => setIsOpen(false)}>
-              <RiCloseLine style={{ marginBottom: "-3px" }} />
-            </button>
+
             <form className="h_form">
               <label className="h_dropdown_topic">Topics</label>
               <DropDownList
+                value={subtopic}
                 className="h_dropdown_options"
                 data={topics}
-                onChange={(e) => setTopic(e.value)}
+                onChange={(e) => setSubtopic(e.target.value)}
               />
               <label className="h_dropdown_topic">Level Of Experience</label>
               <DropDownList
+                value={experience}
                 className="h_dropdown_options"
                 data={lvlOfExp}
-                onChange={(e) => setExp(e.value)}
+                onChange={(e) => setExperience(e.target.value)}
               />
               <label className="h_dropdown_topic">Level Of Question</label>
               <DropDownList
+                value={level}
                 className="h_dropdown_options"
                 data={lvlOfQues}
-                onChange={(e) => setLvl(e.value)}
+                onChange={(e) => setLevel(e.target.value)}
               />
               <label className="h_dropdown_topic">Type your question</label>
               <textarea
-                name="postContent"
+                value={question}
                 className="h_textinput "
                 rows={4}
                 cols={40}
-                onChange={(e) => setQues(e.value)}
+                onChange={(e) => setQuestion(e.target.value)}
               />
               <label className="h_dropdown_topic">
                 Answer for the question
               </label>
               <textarea
-                name="postContent"
+                value={answer}
                 className="h_textinput"
                 rows={4}
                 cols={40}
-                onChange={(e) => setAns(e.value)}
+                onChange={(e) => setAnswer(e.target.value)}
               />
               <div className="h_button_div">
                 <input
@@ -118,3 +149,6 @@ const AddQuestion = ({ setIsOpen }) => {
 };
 
 export default AddQuestion;
+// http://localhost:3000/addquestion?topic=Java+EE+Frameworks&exp=1-2+YOE&lvl=Medium&ques=qwer&ans=qwer
+// question, answer, experience, level, subtopic;
+// http://localhost:3000/addquestion?subtopic=Java+EE+Frameworks&experience=1-2+YOE&level=Medium&question=adf&answer=asdf

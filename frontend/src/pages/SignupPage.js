@@ -7,6 +7,8 @@ import "./LoginPage.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const SignupPage = ({ setIsOpen }) => {
+  const [isRegistered, setIsRegistered] = useState(false);
+
   const [email, setEmail] = useState();
   const [name, setName] = useState();
   const [password, setPassword] = useState("");
@@ -15,17 +17,24 @@ const SignupPage = ({ setIsOpen }) => {
   const [loading, setLoading] = useState();
   const toast = useToast();
   const navigate = useNavigate();
-
+  const RegistrationMessage = () => {
+    return (
+      <div className="registration-message">
+        <p>Successfully registered!</p>
+      </div>
+    );
+  };
   const navigateLogin = () => {
     navigate("/login");
   };
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-  const submitHandler = async () => {
+  const submitHandler = async (e) => {
+     e.preventDefault();
     setLoading(true);
-    console.log("enter all fields");
     if (!name || !email || !password || !confirmpassword) {
+      console.log("enter all fields");
       toast({
         title: "Please fill all the fields",
         status: "warning",
@@ -37,7 +46,7 @@ const SignupPage = ({ setIsOpen }) => {
       return;
     }
     if (password !== confirmpassword) {
-      console.log("password donot match")
+      console.log("password donot match");
       toast({
         title: "Passwords do not match",
         status: "warning",
@@ -48,6 +57,7 @@ const SignupPage = ({ setIsOpen }) => {
       return;
     }
     try {
+      console.log("trying")
       const config = {
         headers: {
           "Content-type": "application/json",
@@ -58,25 +68,12 @@ const SignupPage = ({ setIsOpen }) => {
         { name, email, password },
         config
       );
-      toast({
-        title: "Registration Successful",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-        position:"top",
-      });
+      console.log("registered successfully")
+      navigate("/login");
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
-      navigate("/login");
+      setIsRegistered(true)
     } catch (error) {
-      toast({
-        title: "Error occured!",
-        description: error.response.data.message,
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
       setLoading(false);
     }
   };
@@ -96,7 +93,6 @@ const SignupPage = ({ setIsOpen }) => {
                 className="h_input"
                 placeholder="Enter your name"
                 type="text"
-                name="name"
                 onChange={(e) => setName(e.target.value)}
               />
               <br />
@@ -106,7 +102,6 @@ const SignupPage = ({ setIsOpen }) => {
                 className="h_input"
                 placeholder="abc@gmail.com"
                 type="email"
-                name="email"
                 onChange={(e) => setEmail(e.target.value)}
               />
               <br />

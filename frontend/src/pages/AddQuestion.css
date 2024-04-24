@@ -15,7 +15,7 @@
     border: 2px solid var(--primary-dark)!important;
 }
 .k-input-value-text {
-    color: var(--secondary-dark) !important;
+    color: var(--primary-light) !important;
     font-size: 12px !important;
 }
 .h_textinput{
@@ -23,6 +23,7 @@
     border-radius: 5px;
     resize: none;
     font-family: "Aleo", sans-serif;
-    color: var(--secondary-dark);
+    color: var(--primary-light);
     outline: none;
+    margin-bottom: 20px;
 }
