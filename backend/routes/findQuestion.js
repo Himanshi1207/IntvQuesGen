@@ -8,21 +8,21 @@ const router=express.Router();
 router.post('/findquestion', async(req, res) => {
 
     console.log(req.body);
-    const {experience,level,subtopic, x}=req.body;
+    const {topics,levelOfExp,levelOfQue,numberOfQue}=req.body;
 
     try {
         const que = await Question.find({
             $and: [
-                { experience: experience },
-                { level: level },
-                { subtopic: subtopic }
+                { experience: levelOfExp },
+                { level: levelOfQue },
+                { subtopic: topics }
             ]
         });
-        
+        let x=numberOfQue;
         if(x < que.length){
             que.splice(0, que.length - x);
         }
-
+       console.log("Questions are ",que);
        res.status(200).json({que});
     } 
     catch (error) {

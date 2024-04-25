@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 function requireAuth(req, res, next) {
   // Check for the presence of an authentication token in the request headers
   const bearerToken = req.headers.authorization;
-
+  console.log('Bearer Token is ',bearerToken);
   // If token is missing, return an error
   if (!bearerToken) {
     return res.status(401).json({ error: "Authentication token missing" });

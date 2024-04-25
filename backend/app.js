@@ -6,6 +6,7 @@ const createQuestion=require('./routes/createQuestion');
 const registerUser=require('./routes/registerUser');
 const loginUser = require('./routes/loginUser');
 const findQuestion = require('./routes/findQuestion');
+const forgetPassword=require('./routes/forgetPassword');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(createQuestion);//api to create a new question
 app.use(registerUser);//api to register new users
 app.use(loginUser);//api to login existing users 
 app.use(findQuestion); //api to find questions
+app.use(forgetPassword);//api to reset the password
 
 app.get('/', (req, res) =>{
     res.send('This is test api!!');
