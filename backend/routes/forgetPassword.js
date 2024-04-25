@@ -4,7 +4,7 @@ const router=express.Router();
 
 router.post('/forgetPassword',async (req,res)=>{
     try {
-        const {email,newPassword}=req.body;
+        const {email,newpassword}=req.body;
         //check whether account exists with this mail
         const existingUser=user.findOne({email:email});
         if(!existingUser){
@@ -12,7 +12,7 @@ router.post('/forgetPassword',async (req,res)=>{
         }
         
         //update the password
-        await user.updateOne({ email: email }, { $set: { password: newPassword }});
+        await user.updateOne({ email: email }, { $set: { password: newpassword }});
 
         res.status(200).json({"message":"Password updated !"});
         

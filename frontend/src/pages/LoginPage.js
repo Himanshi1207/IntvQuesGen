@@ -56,6 +56,9 @@ const LoginPage = ({ setIsOpen }) => {
       setLoading(false);
     }
   };
+  const submitForgot=()=>{
+    navigate("/forgotpass")
+  }
   return (
     <div className="h_darkBG">
       <div className="h_centered">
@@ -94,7 +97,7 @@ const LoginPage = ({ setIsOpen }) => {
                   onClick={togglePasswordVisibility}
                 />
               </div>
-              <div className="h_forgotpass">Forgot Password?</div>
+              <div className="h_forgotpass" onClick={submitForgot}>Forgot Password?</div>
               <br />
               <div className="h_button_div">
                 <Button

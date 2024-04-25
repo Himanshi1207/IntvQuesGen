@@ -50,7 +50,7 @@ const AddQuestion = () => {
       console.log(token);
       }
     }
-  }, [subtopic]);
+  }, []);
 
 
   const submitHandler = async (e) => {
