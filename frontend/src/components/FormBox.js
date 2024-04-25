@@ -3,11 +3,11 @@ import { RiCloseLine } from "react-icons/ri";
 import { DropDownList } from "@progress/kendo-react-dropdowns";
 import axios from "axios";
 
-const FormBox = ({ setIsOpen }) => {
+const FormBox = (props) => {
     const [selectedValues, setSelectedValues] = useState({
         topics: "",
-        levelOfExp: "",
         levelOfQue: "",
+        levelOfExp: "",
         numberOfQue: "",
       });
     
@@ -45,25 +45,18 @@ const FormBox = ({ setIsOpen }) => {
           };
 
           const { data } = await axios.post("/findQuestion", selectedValues, config);
-          
-          console.log(data);
+
+          if(data.que.length == 0) {
+            props.setQaTitle("No QA available, showing default QA");
+          }
+          else {
+            props.setQAData(data.que);
+            props.setQaTitle("Generated Questions and Answers");
+          }
         } catch (error) {
-          
+          console.log(error);
         }
       };
-
-
-    const topics = [
-        "Core Java",
-        "OOPS",
-        "Java EE Frameworks",
-        "Database Connectivity",
-        "Web Development",
-    ];
-    const lvlOfExp = ["0 YOE", "1-2 YOE", "3-4 YOE", "5+ YOE"];
-    const lvlOfQues = ["Beginner", "Medium", "Hard"];
-
-    const [topic, setTopic] = useState("");
 
     return (
         <div className="s_outerDiv">
