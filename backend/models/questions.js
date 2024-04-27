@@ -8,7 +8,9 @@ const questionschema = new Schema({
   answer: String,
   experience: String,
   level: String,
-  subtopic: String
+  subtopic: String,
+  userId: { type: Schema.Types.ObjectId, ref: 'User' } // Reference to User model
+
 });
 
 
