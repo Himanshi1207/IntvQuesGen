@@ -8,6 +8,13 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 const AddQuestion = () => {
   const userLogged = JSON.parse(localStorage.getItem("isLoggedIn"));
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!userLogged) {
+      navigate("/");
+    }
+  }, [navigate, userLogged]);
 
   const topics = [
     "Core Java",
@@ -21,7 +28,6 @@ const AddQuestion = () => {
 
   const [subtopic, setSubtopic] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
   const [level, setLevel] = useState("");
   const [experience, setExperience] = useState("");
   const [question, setQuestion] = useState("");

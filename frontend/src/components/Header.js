@@ -1,22 +1,49 @@
-// Header.js
-import React from "react";
-import "./Header.module.css"; 
+import React, { useState, useRef, useEffect } from "react";
+import { FaUser } from "react-icons/fa";
+import "./Header.module.css";
 import LogoImg from "../images/testLogo.png";
 import { useNavigate } from "react-router-dom";
+
 function Header() {
   const userLogged = JSON.parse(localStorage.getItem("isLoggedIn"));
   const navigate = useNavigate();
+  const [showOptions, setShowOptions] = useState(false);
+  const dropdownRef = useRef(null);
+
   const handleLogin = () => {
-    //  Navigate to /
     navigate("/login");
   };
-  const handleAddQuestion=()=>{
-    navigate("/addquestion")
+
+  const handleMyQuestions = () => {
+    navigate("/myQuestions");
   }
-  const handleLogout=()=>{
+
+  const handleAddQuestion = () => {
+    navigate("/addquestion");
+  };
+
+  const handleLogout = () => {
     localStorage.clear();
-    navigate("/")
-  }
+    navigate("/");
+  };
+
+  const handleProfileClick = () => {
+    setShowOptions(!showOptions);
+  };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setShowOptions(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       <header className="s_header">
@@ -27,20 +54,26 @@ function Header() {
           <div className="s_titleText">IntvQuesGen</div>
         </div>
         {userLogged ? (
-          <div>
-            <button className="s_login-box s_login-text" onClick={handleAddQuestion}>
-              Add Question
-            </button>
-            <button className="s_login-box s_login-text" onClick={handleLogout}>
-              Logout
-            </button>
+          <div className="s_profile-icon" onClick={handleProfileClick} ref={dropdownRef}>
+            <FaUser size={40} />
+            {showOptions && (
+              <div className={`s_profile-options ${showOptions ? "show" : ""}`}>
+                <div className="s_profile-option" onClick={handleMyQuestions}>
+                  My Questions
+                </div>
+                <div className="s_profile-option" onClick={handleAddQuestion}>
+                  Add Question
+                </div>
+                <div className="s_profile-option" onClick={handleLogout}>
+                  Logout
+                </div>
+              </div>
+            )}
           </div>
         ) : (
-          <div>
-            <button className="s_login-box s_login-text" onClick={handleLogin}>
-              Login
-            </button>
-          </div>
+          <button className="s_login-box s_login-text" onClick={handleLogin}>
+            Login
+          </button>
         )}
       </header>
     </>
