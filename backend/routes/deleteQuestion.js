@@ -3,12 +3,12 @@ const router=express.Router();
 const Question=require('../models/questions');
 const requireAuth = require('../middleware/auth');
 
-router.delete('/deleteQuestion',requireAuth,async (req,res)=>{
+router.delete('/deleteQuestion/:questionId', requireAuth, async (req, res) => {
     try {
-        const {questionId}=req.body;
+        const questionId = req.params.questionId;
         console.log(questionId);
-        if(questionId.length==0){
-            return res.status(404).json({"message":"QuestionId is required !"});
+        if (!questionId) {
+            return res.status(400).json({ "message": "QuestionId is required !" });
         }
 
         // Find the question by its ID and delete it
@@ -23,7 +23,7 @@ router.delete('/deleteQuestion',requireAuth,async (req,res)=>{
         res.json({ message: 'Question deleted successfully' });
     } catch (error) {
         console.log(error);
-        res.status(500).json({"message":"Internal Server Error !"});
+        res.status(500).json({ "message": "Internal Server Error !" });
     }
 });
 
