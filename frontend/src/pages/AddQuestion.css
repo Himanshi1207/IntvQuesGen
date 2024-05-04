@@ -5,11 +5,11 @@
 }
 .h_dropdown_topic{
     color: var(--primary-dark);
-    font-size:17px;
+    font-size:15px;
 
 }
 .k-picker-solid {
-    margin-bottom: 20px !important;
+    margin-bottom: 12px !important;
     background: none !important;
     color: var(--primary-dark)!important;
     border: 2px solid var(--primary-dark)!important;
@@ -19,6 +19,7 @@
     font-size: 12px !important;
 }
 .h_textinput{
+    padding: 5px;
     border: 2px solid var(--primary-dark);
     border-radius: 5px;
     resize: none;

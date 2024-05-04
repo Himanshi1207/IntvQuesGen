@@ -48,3 +48,8 @@
     font-size: 2em;
     width: 80%;
 }
+.s_ProfileImage{
+    width: 41px;
+    border-radius: 50%;
+    height: 41px;
+}

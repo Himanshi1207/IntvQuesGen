@@ -16,7 +16,7 @@
     height: auto;
     border: 2px solid var(--primary-dark);
     border-radius: 5px;
-    padding: 50px;
+    padding: 30px 50px;
 }
 .h_topic{
     font-weight: bold;
@@ -101,9 +101,22 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.h_inputImage{
+    margin-bottom: 10px;
+    color: var(--primary-dark);
+    font-family: 'Aleo';
+}
 @media only screen and (max-width: 435px) {
     .h_container{
+        width: 250px;
         padding: 20px 0px;
+    }
+    .h_form{
+        width: 220px;
+    }
+    .h_textinput{
+        width: 207px;
     }
     .h_topic{
         font-size: 20px;

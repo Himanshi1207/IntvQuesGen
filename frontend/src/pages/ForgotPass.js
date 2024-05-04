@@ -57,7 +57,7 @@ const ForgotPass = () => {
       );
       console.log("password changed successfully");
       navigate("/login");
-    //   localStorage.setItem("userInfo", JSON.stringify(data));
+      localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
     //   setIsRegistered(true);
     } catch (error) {

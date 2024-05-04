@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { RiCloseLine } from "react-icons/ri";
 import { useToast } from "@chakra-ui/react";
 import "./LoginPage.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const SignupPage = ({ setIsOpen }) => {
-  const [isRegistered, setIsRegistered] = useState(false);
-
   const [email, setEmail] = useState();
   const [name, setName] = useState();
   const [password, setPassword] = useState("");
@@ -16,14 +13,10 @@ const SignupPage = ({ setIsOpen }) => {
   const [confirmpassword, setConfirmpassword] = useState();
   const [loading, setLoading] = useState();
   const toast = useToast();
+  const [pic, setPic] = useState();
+
   const navigate = useNavigate();
-  const RegistrationMessage = () => {
-    return (
-      <div className="registration-message">
-        <p>Successfully registered!</p>
-      </div>
-    );
-  };
+
   const navigateLogin = () => {
     navigate("/login");
   };
@@ -31,7 +24,7 @@ const SignupPage = ({ setIsOpen }) => {
     setShowPassword(!showPassword);
   };
   const submitHandler = async (e) => {
-     e.preventDefault();
+    e.preventDefault();
     setLoading(true);
     if (!name || !email || !password || !confirmpassword) {
       console.log("enter all fields");
@@ -57,7 +50,7 @@ const SignupPage = ({ setIsOpen }) => {
       return;
     }
     try {
-      console.log("trying")
+      console.log("trying");
       const config = {
         headers: {
           "Content-type": "application/json",
@@ -65,16 +58,56 @@ const SignupPage = ({ setIsOpen }) => {
       };
       const { data } = await axios.post(
         "/register",
-        { name, email, password },
+        { name, email, password,pic },
         config
       );
-      console.log("registered successfully")
+      console.log("registered successfully");
       navigate("/login");
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
-      setIsRegistered(true)
     } catch (error) {
       setLoading(false);
+    }
+  };
+  const postDetails = (pics) => {
+    setLoading(true);
+    if (pics === undefined) {
+      toast({
+        title: "Please Select an image",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+      const data = new FormData();
+      data.append("file", pics);
+      data.append("upload_preset", "talk-a-tive");
+      data.append("cloud_name", "dlam0u6qf");
+      fetch("https://api.cloudinary.com/v1_1/dlam0u6qf/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setPic(data.url.toString());
+          console.log(data.url.toString());
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+        });
+    } else {
+      toast({
+        title: "Please Select an image to upload",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
     }
   };
   return (
@@ -135,6 +168,13 @@ const SignupPage = ({ setIsOpen }) => {
                   onClick={togglePasswordVisibility}
                 />
               </div>
+              <input
+                className="h_inputImage"
+                type="file"
+                p="1.5"
+                accept="image/*"
+                onChange={(e) => postDetails(e.target.files[0])}
+              />
               {/* <div className="h_forgotpass">Forgot Password?</div> */}
               <br />
               <div className="h_button_div">

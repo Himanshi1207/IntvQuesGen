@@ -27,7 +27,7 @@ router.post("/login", async (req, res) => {
     }); // Sign token with secret key and set expiration time
 
     // Return token and success message
-    res.status(200).json({ token: token, message: "Login successful" });
+    res.status(200).json({ token: token, pic:user.pic, message: "Login successful" });
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).json({ error: "Internal Server Error" });
