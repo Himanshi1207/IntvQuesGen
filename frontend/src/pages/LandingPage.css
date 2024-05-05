@@ -143,6 +143,7 @@
     align-items: center;
 }
 .s_button{
+    cursor: pointer;
     border: 2px solid var(--primary-dark);
     border-radius: 5px;
     background-color: var(--primary-dark);
@@ -189,12 +190,17 @@
     }
 
     .s_container {
-        flex-direction: column; 
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     
     .s_column1, .s_column2 {
         padding: 40px;
         flex: 100%;
+    }
+    .s_column1{
+        width: 100%;
     }
 }
 
@@ -230,11 +236,14 @@
 }
 
 .s_questions {
+    font-size: 20px;
     padding: 10px;
     background-color: white;
 }
 
 .s_answers {
+    text-align: justify;
+    font-size: 18px;
     padding: 10px;
     background-color: var(--secondary-light);
     opacity: 0.7;
@@ -247,9 +256,18 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    width: 41px;
+    border-radius: 50%;
+    height: 41px;
   }
-
+.s_ProfileImage {
+    width: 50px;
+    border-radius: 50%;
+    height: 50px;
+}
 .s_profile-options {
+    color: var(--primary-light);
+    font-family: 'Aleo';
     display: none;
     position: absolute;
     top: 40px;

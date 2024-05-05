@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
-import { RiCloseLine } from "react-icons/ri";
 import { Button } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -50,7 +49,7 @@ const LoginPage = ({ setIsOpen }) => {
       localStorage.setItem("isLoggedIn", true);
       setLoading(false);
       navigate("/");
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       
       setLoading(false);

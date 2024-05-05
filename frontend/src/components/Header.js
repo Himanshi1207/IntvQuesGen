@@ -9,14 +9,20 @@ function Header() {
   const navigate = useNavigate();
   const [showOptions, setShowOptions] = useState(false);
   const dropdownRef = useRef(null);
+  const user = JSON.parse(localStorage.getItem("userInfo"));
+  const [userPic, setUserpic] = useState(
+    "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
+  );
+  // setUserpic(user.pic);
 
+  // console.log(user);
   const handleLogin = () => {
     navigate("/login");
   };
 
   const handleMyQuestions = () => {
     navigate("/myQuestions");
-  }
+  };
 
   const handleAddQuestion = () => {
     navigate("/addquestion");
@@ -28,6 +34,7 @@ function Header() {
   };
 
   const handleProfileClick = () => {
+    
     setShowOptions(!showOptions);
   };
 
@@ -38,6 +45,8 @@ function Header() {
   };
 
   useEffect(() => {
+    if(userLogged)
+      setUserpic(user.pic);
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -54,8 +63,12 @@ function Header() {
           <div className="s_titleText">IntvQuesGen</div>
         </div>
         {userLogged ? (
-          <div className="s_profile-icon" onClick={handleProfileClick} ref={dropdownRef}>
-            <FaUser size={40} />
+          <div
+            className="s_profile-icon"
+            onClick={handleProfileClick}
+            ref={dropdownRef}
+          >
+            <img src={userPic} className="s_ProfileImage" alt="Profile" />
             {showOptions && (
               <div className={`s_profile-options ${showOptions ? "show" : ""}`}>
                 <div className="s_profile-option" onClick={handleMyQuestions}>
