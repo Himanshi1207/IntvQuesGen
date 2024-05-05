@@ -6,7 +6,8 @@ import QueAnsBox from './QueAnsBox';
 function GeneratedQABox(props) {
   let QAData = props.QAData;
   let qaTitle = props.qaTitle;
-  
+  console.log("this is qa data ");
+  console.log(QAData);
   return (
     <>
         <div className='s_qaBox'>
@@ -15,7 +16,7 @@ function GeneratedQABox(props) {
           </div>
           <div className="s_questionBox">
             {QAData.map((qa, index) => (
-              <QueAnsBox key={index} question={qa.question} answer={qa.answer} />
+              <QueAnsBox key={index} question={qa.question} answer={qa.answer.replace(/\n/g, '<br>')} />
             ))}
           </div>
         </div>

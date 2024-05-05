@@ -19,7 +19,7 @@ function ProfileQuestions(props) {
             </div>
             <div className="s_questionBox">
               {QAData.map((qa, index) => (
-                < ProfileQABox key={index} questionId = {qa._id} question={qa.question} answer={qa.answer} />
+                < ProfileQABox key={index} questionId = {qa._id} question={qa.question} answer={qa.answer.replace(/\n/g, '<br>')} />
               ))}
             </div>
           </div>

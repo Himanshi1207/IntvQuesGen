@@ -32,7 +32,7 @@ function ProfileQABox(props) {
     <>
       <div className="s_myQAContainer">
         <div className="s_myQAquestions">{question}</div>
-        <div className="s_myQAanswers">{answer}</div>
+        <div className="s_myQAanswers" dangerouslySetInnerHTML={{ __html: answer }}/>
         <div className='s_myQAButtons'>
           <button className='s_myQAButtonsED' onClick={onEditClick}>Edit</button>
           <button className='s_myQAButtonsED' onClick={onDeleteClick}>Delete</button>
