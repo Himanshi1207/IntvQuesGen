@@ -205,8 +205,10 @@
 }
 
 .s_blueBox {
+    display: flex;
+    justify-content: space-between;
     margin-top: 30px;
-    height: 45px;
+    /* height: 45px; */
     background-color: var(--primary-dark);
     border-radius: 10px 10px 0 0;
     filter: brightness(1.5);

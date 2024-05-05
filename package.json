@@ -10,7 +10,9 @@
     "pdfkit": "^0.15.0"
   },
   "scripts": {
-    "dev": "nodemon backend/app.js"
+    "start": "nodemon backend/app.js",
+    "server": "node backend/app.js",
+    "build":"npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "type": "commonjs"
 }
