@@ -9,7 +9,7 @@ function QueAnsBox(props) {
     <>
       <div className="s_queAnsBox">
         <div className="s_questions">{question}</div>
-        <div className="s_answers">{answer}</div>
+        <div className="s_answers" dangerouslySetInnerHTML={{ __html: answer }}/>
       </div>
     </>
   );
