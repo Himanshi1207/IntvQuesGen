@@ -5,6 +5,8 @@ import { useToast } from "@chakra-ui/react";
 import "./LoginPage.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authActions } from "../store/auth-slice";
 const SignupPage = ({ setIsOpen }) => {
   const [email, setEmail] = useState();
   const [name, setName] = useState();
@@ -16,6 +18,7 @@ const SignupPage = ({ setIsOpen }) => {
   const [pic, setPic] = useState();
 
   const navigate = useNavigate();
+  const dispatch=useDispatch();
 
   const navigateLogin = () => {
     navigate("/login");
@@ -65,6 +68,7 @@ const SignupPage = ({ setIsOpen }) => {
       navigate("/login");
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
+      dispatch(authActions.logout())
     } catch (error) {
       setLoading(false);
     }

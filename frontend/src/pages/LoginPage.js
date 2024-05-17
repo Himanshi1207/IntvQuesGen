@@ -6,21 +6,18 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { authActions } from "../store/auth-slice";
 
-const LoginPage = ({ setIsOpen }) => {
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) {
-      const foundUser = JSON.parse(loggedInUser);
-      setUser(foundUser);
-    }
-  }, []);
+const LoginPage = () => {
+
   const [email, setEmail] = useState();
   const [loading, setLoading] = useState(false);
   const [password, setPassword] = useState();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [user, setUser] = useState();
+  const dispatch=useDispatch();
   const navigateSignup = () => {
     navigate("/signup");
   };
@@ -29,13 +26,13 @@ const LoginPage = ({ setIsOpen }) => {
   };
   const submitHandler = async (e) => {
      e.preventDefault();
-    setLoading(true);
-    if (!email || !password) {
-      console.log("email or password missing");
+     setLoading(true);
+     if (!email || !password) {
+       console.log("email or password missing");
       setLoading(false);
       return;
     }
-
+    
     try {
       console.log("trying");
       const config = {
@@ -50,6 +47,7 @@ const LoginPage = ({ setIsOpen }) => {
       setLoading(false);
       navigate("/");
       // console.log(data);
+      dispatch(authActions.login())
     } catch (error) {
       
       setLoading(false);

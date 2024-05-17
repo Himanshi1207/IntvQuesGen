@@ -50,7 +50,7 @@ function shuffleArray(array) {
     return array;
 }
 
-router.post('/findquestion',requireAuth, async (req, res) => {
+router.post('/findquestion', async (req, res) => {
     console.log(req.body);
     const { topics, levelOfExp, levelOfQue, numberOfQue } = req.body;
 
