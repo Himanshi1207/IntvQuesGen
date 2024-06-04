@@ -6,7 +6,7 @@
     align-items: center;
 }
 .h_container{
-    z-index: 10;
+    /* z-index: 10; */
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -17,6 +17,7 @@
     border: 2px solid var(--primary-dark);
     border-radius: 5px;
     padding: 30px 50px;
+    margin: 20px;
 }
 .h_topic{
     font-weight: bold;

@@ -55,7 +55,7 @@ const EditQuestion = () => {
         config
       );
       setLoading(false);
-      navigate("/");
+      navigate("/myQuestions");
       console.log(data);
     } catch (error) {
       setLoading(false);

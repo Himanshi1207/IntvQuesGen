@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaUser } from "react-icons/fa";
-import "./Header.module.css";
+import "./Header.css";
 import LogoImg from "../images/logo1.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../store/auth-slice";
 function Header(props) {
+// const isLoggedIn=useSelector(state=>state.auth.isLoggedIn)
   const isLoggedIn=useSelector(state=>state.auth.isLoggedIn)
   const dispatch=useDispatch();
   const userLogged = JSON.parse(localStorage.getItem("isLoggedIn"));
@@ -20,7 +21,9 @@ function Header(props) {
   const handleLogin = () => {
     navigate("/login");
   };
-
+  const navigateLandingPage=()=>{
+    navigate("/")
+  }
   const handleMyQuestions = () => {
     navigate("/myQuestions");
   };
@@ -59,11 +62,16 @@ function Header(props) {
       <header className="s_header">
         <div className="s_logo-container">
           <div className="s_logo">
-            <img src={LogoImg} alt="Your Logo" width='70px'/>
+            <img
+              src={LogoImg}
+              alt="Your Logo"
+              width="70px"
+              onClick={navigateLandingPage}
+            />
           </div>
           {/* <div className="s_titleText">IntvQuesGen</div> */}
         </div>
-        {isLoggedIn ? (
+        {userLogged ? (
           <div className="h_logoRight">
             {/* <button className="h_button_download">DownloadPDF</button> */}
             <div

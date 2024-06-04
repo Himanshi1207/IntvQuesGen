@@ -1,10 +1,9 @@
 // ProfileQuestions
 import React from 'react';
-import './GeneratedQABox.module.css'; 
 import ProfileQABox from './ProfileQABox';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-
+import './ProfileQuestions.css'
 function ProfileQuestions(props) {
   let QAData = props.QAData;
   let qaTitle = props.qaTitle;

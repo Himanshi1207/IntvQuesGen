@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import './SelfWritingText.css'
 const SelfWritingText = () => {
   const [text, setText] = useState('');
   const textContent = "Interview Question Generator";

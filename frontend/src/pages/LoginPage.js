@@ -34,7 +34,7 @@ const LoginPage = () => {
     }
     
     try {
-      console.log("trying");
+      // console.log("trying");
       const config = {
         headers: {
           "Content-type": "application/json",
@@ -47,9 +47,9 @@ const LoginPage = () => {
       setLoading(false);
       navigate("/");
       // console.log(data);
-      dispatch(authActions.login())
+      dispatch(authActions.login({isLoggedIn:true}))
+      // dispatch(authActions.login())
     } catch (error) {
-      
       setLoading(false);
     }
   };

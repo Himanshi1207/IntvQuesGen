@@ -6,6 +6,7 @@ import "./AddQuestion.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import Header from "../components/Header";
 const AddQuestion = () => {
   const userLogged = JSON.parse(localStorage.getItem("isLoggedIn"));
   const navigate = useNavigate();
@@ -42,7 +43,6 @@ const AddQuestion = () => {
   //   }
   // }, [subtopic]);
 
-
   useEffect(() => {
     // Retrieve userinfo object from localStorage
     const userinfoString = localStorage.getItem("userInfo");
@@ -51,13 +51,12 @@ const AddQuestion = () => {
       // Extract token from userinfo
       const storedToken = userinfo.token;
       if (storedToken) {
-      console.log("token");
-      setToken(storedToken);
-      console.log(token);
+        console.log("token");
+        setToken(storedToken);
+        console.log(token);
       }
     }
   }, []);
-
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -73,7 +72,7 @@ const AddQuestion = () => {
       const config = {
         headers: {
           // "Content-type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       };
       const { data } = await axios.post(
@@ -85,72 +84,75 @@ const AddQuestion = () => {
       // localStorage.setItem("userInfo", JSON.stringify(data));
       // localStorage.setItem("isLoggedIn", true);
       setLoading(false);
-      navigate("/");
+      navigate("/myQuestions");
       console.log(data);
     } catch (error) {
       setLoading(false);
     }
   };
   return (
-    <div className="h_darkBG">
-      <div className="h_centered">
-        <div className="h_outer_div">
-          <div className="h_container">
-            <div className="h_topic">Add Question</div>
+    <>
+      {/* <div className="h_darkBG"> */}
+        <Header />
+        {/* <div className="h_centered"> */}
+          <div className="h_outer_div">
+            <div className="h_container">
+              <div className="h_topic">Add Question</div>
 
-            <form className="h_form">
-              <label className="h_dropdown_topic">Topics</label>
-              <DropDownList
-                value={subtopic}
-                className="h_dropdown_options"
-                data={topics}
-                onChange={(e) => setSubtopic(e.target.value)}
-              />
-              <label className="h_dropdown_topic">Level Of Experience</label>
-              <DropDownList
-                value={experience}
-                className="h_dropdown_options"
-                data={lvlOfExp}
-                onChange={(e) => setExperience(e.target.value)}
-              />
-              <label className="h_dropdown_topic">Level Of Question</label>
-              <DropDownList
-                value={level}
-                className="h_dropdown_options"
-                data={lvlOfQues}
-                onChange={(e) => setLevel(e.target.value)}
-              />
-              <label className="h_dropdown_topic">Type your question</label>
-              <textarea
-                value={question}
-                className="h_textinput "
-                rows={4}
-                cols={40}
-                onChange={(e) => setQuestion(e.target.value)}
-              />
-              <label className="h_dropdown_topic">
-                Answer for the question
-              </label>
-              <textarea
-                value={answer}
-                className="h_textinput"
-                rows={4}
-                cols={40}
-                onChange={(e) => setAnswer(e.target.value)}
-              />
-              <div className="h_button_div">
-                <input
-                  className="h_button"
-                  type="submit"
-                  value="Add"
-                  onClick={submitHandler}
+              <form className="h_form">
+                <label className="h_dropdown_topic">Topics</label>
+                <DropDownList
+                  value={subtopic}
+                  className="h_dropdown_options"
+                  data={topics}
+                  onChange={(e) => setSubtopic(e.target.value)}
                 />
-              </div>
-            </form>
-          </div>
-        </div>
+                <label className="h_dropdown_topic">Level Of Experience</label>
+                <DropDownList
+                  value={experience}
+                  className="h_dropdown_options"
+                  data={lvlOfExp}
+                  onChange={(e) => setExperience(e.target.value)}
+                />
+                <label className="h_dropdown_topic">Level Of Question</label>
+                <DropDownList
+                  value={level}
+                  className="h_dropdown_options"
+                  data={lvlOfQues}
+                  onChange={(e) => setLevel(e.target.value)}
+                />
+                <label className="h_dropdown_topic">Type your question</label>
+                <textarea
+                  value={question}
+                  className="h_textinput "
+                  rows={4}
+                  cols={40}
+                  onChange={(e) => setQuestion(e.target.value)}
+                />
+                <label className="h_dropdown_topic">
+                  Answer for the question
+                </label>
+                <textarea
+                  value={answer}
+                  className="h_textinput"
+                  rows={4}
+                  cols={40}
+                  onChange={(e) => setAnswer(e.target.value)}
+                />
+                <div className="h_button_div">
+                  <input
+                    className="h_button"
+                    type="submit"
+                    value="Add"
+                    onClick={submitHandler}
+                  />
+                </div>
+              </form>
+            </div>
+          {/* </div> */}
+        {/* </div> */}
       </div>
-    </div>
+    </>
   );
 };
 

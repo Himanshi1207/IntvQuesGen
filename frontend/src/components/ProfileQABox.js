@@ -2,16 +2,19 @@ import React from 'react';
 import './ProfileQABox.css';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../store/auth-slice';
 
 function ProfileQABox(props) {
   const { question, answer, questionId } = props;
   const navigate = useNavigate();
-
+  const dispatch=useDispatch();
   const onEditClick = async () => {
     navigate("/editquestion", {state: {questionId, prvQuestion: question, prvAnswer: answer}});
   };
 
-  const onDeleteClick = async () => {
+  const onDeleteClick = async (e) => {
+    e.preventDefault();
       try {
         const userinfoString = localStorage.getItem("userInfo");
         const userinfo = JSON.parse(userinfoString);
@@ -21,8 +24,13 @@ function ProfileQABox(props) {
         const { data } = await axios.delete(
           `/deleteQuestion/${questionId}`,
         );
-        
+        navigate('/myQuestions')
         window.location.reload();
+        console.log("refresh")
+        dispatch(authActions.login())
+        console.log("after Refresh")
+        // dispatch(authActions.login({isLoggedIn:true}))
+
       } catch (error) {
         console.log(error);
       }

@@ -6,6 +6,7 @@ import FormBox from "../components/FormBox";
 import Intro from "../components/Intro";
 import GeneratedQABox from "../components/GeneratedQABox";
 import "./LandingPage.css";
+import Footer from "../components/Footer";
 
 function LandingPage() {
   const defaultQA = [
@@ -63,6 +64,7 @@ function LandingPage() {
           <div>
               <GeneratedQABox QAData={QAData} setQAData={setQAData} qaTitle={qaTitle}/>
           </div>
+          <Footer/>
         </div>
       </div>
     </>

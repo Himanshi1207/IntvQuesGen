@@ -1,6 +1,6 @@
 // QueAnsBox.js
 import React from 'react';
-import './QueAnsBox.module.css'; // Import CSS module
+import './QueAnsBox.css'; // Import CSS module
 
 function QueAnsBox(props) {
   const { question, answer } = props;

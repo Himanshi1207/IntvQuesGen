@@ -61,7 +61,7 @@ const SignupPage = ({ setIsOpen }) => {
       };
       const { data } = await axios.post(
         "/register",
-        { name, email, password,pic },
+        { name, email, password, pic },
         config
       );
       console.log("registered successfully");

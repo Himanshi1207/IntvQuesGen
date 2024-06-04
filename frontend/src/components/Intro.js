@@ -1,6 +1,6 @@
 // Intro.js
 import React from 'react';
-import './Intro.module.css'; // Import CSS module
+import './Intro.css'; // Import CSS module
 import SelfWritingText from './SelfWritingText';
 
 

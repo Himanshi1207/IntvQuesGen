@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { RiCloseLine } from "react-icons/ri";
 import { DropDownList } from "@progress/kendo-react-dropdowns";
 import axios from "axios";
-
+import './FormBox.css'
 const FormBox = (props) => {
     const [selectedValues, setSelectedValues] = useState({
         topics: "",

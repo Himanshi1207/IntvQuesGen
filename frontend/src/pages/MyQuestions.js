@@ -3,6 +3,7 @@ import "./MyQuestions.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ProfileQuestions from "../components/ProfileQuestions";
+import Header from "../components/Header";
 
 const MyQuestions = () => {
   const [loading, setLoading] = useState(false);
@@ -41,10 +42,11 @@ const MyQuestions = () => {
 
       fetchData();
     }
-  }, [navigate]); // Add navigate to dependency array to avoid warnings
+  }, []); // Add navigate to dependency array to avoid warnings
 
   return (
     <div className="s_darkBG">
+      <Header/>
       <div className="solidBorder">
         <ProfileQuestions QAData={QAData} setQAData={setQAData} qaTitle={qaTitle} />
       </div>
