@@ -22,7 +22,7 @@ const SelfWritingText = () => {
     return () => clearTimeout(timeoutId);
   }, []);
 
-  return <p className="s_mainTextIntv">{text}</p>;
+  return <p className="s_mainTextIntv">Interview Question Generator</p>;
 };
 
 export default SelfWritingText;
